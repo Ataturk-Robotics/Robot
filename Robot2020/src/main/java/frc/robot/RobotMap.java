@@ -19,6 +19,20 @@ public class RobotMap {
   // public static int leftMotor = 1;
   // public static int rightMotor = 2;
 
+  //Motor Sürücüleri
+  public static int takoshlarMotorID = 16;
+  public static int asoshlarMotorID = 17;
+  public static int topAlmaMotorID = 13;
+  public static int topTasimaMotorID = 12;
+  public static int firlatmaMotorID = 15;
+
+  //Axisler
+  public static int xAxis = 0;
+  public static int yAxis = 1;
+  public static int zRotationAxis = 2;
+  public static int sliderAxis = 3;
+
+
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
