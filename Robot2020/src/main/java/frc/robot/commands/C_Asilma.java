@@ -21,6 +21,8 @@ public class C_Asilma extends Command {
     requires(Robot.sAsilma);
   }
 
+  
+
   WPI_VictorSPX asoshlarMotor = new WPI_VictorSPX(17);
   WPI_VictorSPX takoshlarMotor = new WPI_VictorSPX(16);
 
