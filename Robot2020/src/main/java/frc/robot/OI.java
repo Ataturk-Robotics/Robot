@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 
   public XboxController driverController = new XboxController(0);
+  
 
   public JoystickButton asoshlarBaslaButton = new JoystickButton(driverController, 11);
   public JoystickButton asoshlarBitirButton = new JoystickButton(driverController, 12);

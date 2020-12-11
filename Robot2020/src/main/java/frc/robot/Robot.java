@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.SS_Asilma;
+import frc.robot.subsystems.SS_Goruntu;
 import frc.robot.subsystems.SS_Hareket;
 import frc.robot.subsystems.SS_Pneumatic;
 import frc.robot.subsystems.SS_TopAlma;
@@ -44,6 +45,7 @@ public class Robot extends TimedRobot {
   public static SS_TopTasima sTopTasima = new SS_TopTasima();
   public static SS_TopFirlatma sTopFirlatma = new SS_TopFirlatma();
   public static SS_Pneumatic sPneumatic = new SS_Pneumatic();
+  public static SS_Goruntu sGoruntu = new SS_Goruntu();
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   WPI_VictorSPX sagMotor = new WPI_VictorSPX(11);
@@ -108,30 +110,6 @@ public class Robot extends TimedRobot {
   public void autonomousInit() {
     //m_autonomousCommand = m_chooser.getSelected();
 
-    
-    /*
-     * String autoSelected = SmartDashboard.getString("Auto Selector",
-     * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-     * = new MyAutoCommand(); break; case "Default Auto": default:
-     * autonomousCommand = new ExampleCommand(); break; }
-    
-
-    // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.start();
-      **/
-    
-  }
-
-  
-
-  /**
-   * This function is called periodically during autonomous.
-   */
-  @Override
-  public void autonomousPeriodic() {
-    //Scheduler.getInstance().run();
-    
     time.reset();
     time.start();
 
@@ -163,6 +141,29 @@ public class Robot extends TimedRobot {
     while(time.get()<2){}
     sagMotor.set(ControlMode.PercentOutput, 0);
     solMotor.set(ControlMode.PercentOutput, 0);
+    /*
+     * String autoSelected = SmartDashboard.getString("Auto Selector",
+     * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
+     * = new MyAutoCommand(); break; case "Default Auto": default:
+     * autonomousCommand = new ExampleCommand(); break; }
+    
+
+    // schedule the autonomous command (example)
+    if (m_autonomousCommand != null) {
+      m_autonomousCommand.start();
+      **/
+    
+  }
+
+  
+  /**
+   * This function is called periodically during autonomous.
+   */
+  @Override
+  public void autonomousPeriodic() {
+    //Scheduler.getInstance().run();
+    
+    
   }
 
   @Override
@@ -182,7 +183,6 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-  
   }
 
   /**
