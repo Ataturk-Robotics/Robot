@@ -31,5 +31,5 @@ public final class Constants {
     public static int[] kIntakeSolenoidPorts = { 0, 1 };
 
     public static int rollerMotorId = 1;
-    public static int intakeMotorId = 1;
+    public static int intakeMotorId = 2;
 }

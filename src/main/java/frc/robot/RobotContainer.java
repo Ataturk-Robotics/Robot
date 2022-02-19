@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.Intake.ArmCommand;
+import frc.robot.commands.Intake.IntakeCommand;
 import frc.robot.commands.Intake.RollerCommand;
 import frc.robot.subsystems.IntakeSubsystem;
 
@@ -38,8 +39,8 @@ public class RobotContainer {
     var intakeButton = new JoystickButton(Constants.controller, Constants.kIntakeButton);
 
     armButton.whenPressed(new ArmCommand(intakeSubsystem));
-    intakeButton.whileHeld(new RollerCommand(intakeSubsystem));
-    
+    intakeButton.whileHeld(new IntakeCommand(intakeSubsystem));
+
   }
 
   /**

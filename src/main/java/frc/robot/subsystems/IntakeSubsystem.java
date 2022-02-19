@@ -23,6 +23,7 @@ public class IntakeSubsystem extends SubsystemBase {
       Constants.kIntakeSolenoidPorts[1]);
 
   WPI_VictorSPX rollerSpx = new WPI_VictorSPX(Constants.rollerMotorId);
+  WPI_VictorSPX intakeSpx = new WPI_VictorSPX(Constants.intakeMotorId);
 
   /** Creates a new IntakeSubsystem. */
   public IntakeSubsystem() {
@@ -48,6 +49,10 @@ public class IntakeSubsystem extends SubsystemBase {
 
   public void setRoller(double value){
     rollerSpx.set(ControlMode.PercentOutput, value);
+  }
+
+  public void setIntake(double value){
+    intakeSpx.set(ControlMode.PercentOutput, value);
   }
 
 
