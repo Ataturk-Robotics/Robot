@@ -26,8 +26,8 @@ public class IntakeCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mIntakeSubsystem.setRoller(Constants.controller.getRawAxis(2));
-    mIntakeSubsystem.setIntake(Constants.controller.getRawAxis(2));
+    mIntakeSubsystem.setRoller(Constants.controller.getRawAxis(Constants.powerAxis));
+    mIntakeSubsystem.setIntake(Constants.controller.getRawAxis(Constants.powerAxis));
   }
 
   // Called once the command ends or is interrupted.
