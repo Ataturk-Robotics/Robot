@@ -27,7 +27,7 @@ public class IntakeCommand extends CommandBase {
   @Override
   public void execute() {
     mIntakeSubsystem.setRoller(Constants.controller.getRawAxis(Constants.powerAxis));
-    mIntakeSubsystem.setIntake(Constants.controller.getRawAxis(Constants.powerAxis));
+    mIntakeSubsystem.setIntake(-1*Constants.controller.getRawAxis(Constants.powerAxis));
   }
 
   // Called once the command ends or is interrupted.

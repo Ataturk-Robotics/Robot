@@ -27,19 +27,19 @@ public final class Constants {
     // Axes
     public static int xAxis = 0;
     public static int yAxis = 1;
-    public static int powerAxis = 2;
+    public static int powerAxis = 3;
 
     // Buttons on the controller
-    public static int kIntakeButton = 2;
-    public static int kArmButton = 3;
+    public static int kIntakeButton = 4;
+    public static int kArmButton = 2;
     
     //The double solenoid used to control the pneumatic arm
-    public static int[] kIntakeSolenoidPorts = { 0, 1 };
+    public static int[] kIntakeSolenoidPorts = { 2, 4 };
 
     //Motor Id's
-    public static int rollerMotorId = 1;
-    public static int intakeMotorId = 2;
+    public static int rollerMotorId = 13;
+    public static int intakeMotorId = 17;
 
-    public static int kRightMotorId = 3;
-    public static int kLeftMotorId = 4;
+    public static int kRightMotorId = 11;
+    public static int kLeftMotorId = 10;
 }

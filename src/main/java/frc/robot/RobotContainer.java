@@ -41,7 +41,7 @@ public class RobotContainer {
     var intakeButton = new JoystickButton(Constants.controller, Constants.kIntakeButton);
 
     armButton.whenPressed(new ArmCommand(intakeSubsystem));
-    intakeButton.whileHeld(new IntakeCommand(intakeSubsystem));
+    intakeButton.whenHeld(new IntakeCommand(intakeSubsystem));
 
   }
 
