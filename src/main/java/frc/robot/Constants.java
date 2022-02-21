@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.XboxController;
  */
 public final class Constants {
 
+    public static int kShooterButton = 1;
     // The controller itself
     private static int kXboxControllerPort = 0;    
     public static XboxController controller = new XboxController(kXboxControllerPort);
@@ -39,6 +40,7 @@ public final class Constants {
     //Motor Id's
     public static int rollerMotorId = 13;
     public static int intakeMotorId = 17;
+    public static int[] shooterMotorIds = {15, 16};
 
     public static int kRightMotorId = 11;
     public static int kLeftMotorId = 10;

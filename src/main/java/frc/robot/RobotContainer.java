@@ -13,8 +13,10 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.Intake.ArmCommand;
 import frc.robot.commands.Intake.IntakeCommand;
 import frc.robot.commands.Intake.RollerCommand;
+import frc.robot.commands.Shooter.ShooterCommand;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -30,6 +32,7 @@ public class RobotContainer {
 
   IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
   DriveSubsystem driveSubsystem = new DriveSubsystem();
+  ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
 
   public RobotContainer() {
     // Configure the button bindings
@@ -39,9 +42,11 @@ public class RobotContainer {
   private void configureButtonBindings() {
     var armButton = new JoystickButton(Constants.controller, Constants.kArmButton);
     var intakeButton = new JoystickButton(Constants.controller, Constants.kIntakeButton);
-
+    var shooterButton = new JoystickButton(Constants.controller, Constants.kShooterButton);
+    
     armButton.whenPressed(new ArmCommand(intakeSubsystem));
     intakeButton.whenHeld(new IntakeCommand(intakeSubsystem));
+    shooterButton.whenHeld(new ShooterCommand(shooterSubsystem));
 
   }
 
