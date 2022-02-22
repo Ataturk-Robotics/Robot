@@ -20,7 +20,6 @@ import edu.wpi.first.wpilibj.XboxController;
  */
 public final class Constants {
 
-    public static int kShooterButton = 1;
     // The controller itself
     private static int kXboxControllerPort = 0;    
     public static XboxController controller = new XboxController(kXboxControllerPort);
@@ -31,8 +30,10 @@ public final class Constants {
     public static int powerAxis = 3;
 
     // Buttons on the controller
-    public static int kIntakeButton = 4;
+    public static int kIntakeButton = 3;
     public static int kArmButton = 2;
+    public static int kShooterButton = 1;
+    public static int kAlignButton = 7;
     
     //The double solenoid used to control the pneumatic arm
     public static int[] kIntakeSolenoidPorts = { 2, 4 };

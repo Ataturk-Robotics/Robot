@@ -8,7 +8,12 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import edu.wpi.first.wpilibj2.command.RunCommand;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.Subsystem;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.Intake.ArmCommand;
 import frc.robot.commands.Intake.IntakeCommand;
@@ -43,11 +48,17 @@ public class RobotContainer {
     var armButton = new JoystickButton(Constants.controller, Constants.kArmButton);
     var intakeButton = new JoystickButton(Constants.controller, Constants.kIntakeButton);
     var shooterButton = new JoystickButton(Constants.controller, Constants.kShooterButton);
-    
+    var alignButton = new JoystickButton(Constants.controller, Constants.kAlignButton);
+
     armButton.whenPressed(new ArmCommand(intakeSubsystem));
     intakeButton.whenHeld(new IntakeCommand(intakeSubsystem));
     shooterButton.whenHeld(new ShooterCommand(shooterSubsystem));
-
+    
+    alignButton.whenPressed(new SequentialCommandGroup(
+        new RunCommand(() -> intakeSubsystem.setIntake(-0.))
+            .raceWith(new WaitCommand(0.1)),
+        new RunCommand(() -> intakeSubsystem.setIntake(0))
+            .raceWith(new WaitCommand(0.1))));
   }
 
   /**
