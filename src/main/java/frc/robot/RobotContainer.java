@@ -53,12 +53,9 @@ public class RobotContainer {
     armButton.whenPressed(new ArmCommand(intakeSubsystem));
     intakeButton.whenHeld(new IntakeCommand(intakeSubsystem));
     shooterButton.whenHeld(new ShooterCommand(shooterSubsystem));
-    
     alignButton.whenPressed(new SequentialCommandGroup(
-        new RunCommand(() -> intakeSubsystem.setIntake(-0.))
-            .raceWith(new WaitCommand(0.1)),
-        new RunCommand(() -> intakeSubsystem.setIntake(0))
-            .raceWith(new WaitCommand(0.1))));
+        new RunCommand(() -> intakeSubsystem.setIntake(-0.3)).withTimeout(0.3),
+        new RunCommand(() -> intakeSubsystem.setIntake(0)).withTimeout(0.1)));
   }
 
   /**
