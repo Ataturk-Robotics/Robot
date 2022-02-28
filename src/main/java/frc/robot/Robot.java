@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import com.revrobotics.ColorSensorV3;
+
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
@@ -15,8 +17,13 @@ import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.cscore.VideoMode;
 import edu.wpi.first.cscore.VideoMode.PixelFormat;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.SimpleWidget;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
@@ -36,20 +43,64 @@ public class Robot extends TimedRobot {
 
   Thread m_VisionThread;
 
+  I2C.Port i2cPort = I2C.Port.kOnboard;
+  ColorSensorV3 cV3 = new ColorSensorV3(i2cPort);
+
   @Override
   public void robotInit() {
     // Instantiate our RobotContainer. This will perform all our button bindings,
     // and put our
     // autonomous chooser on the dashboard.
+
+    Compressor comp = new Compressor(PneumaticsModuleType.CTREPCM);
+    comp.disable();
+
     m_robotContainer = new RobotContainer();
 
     m_VisionThread = new Thread(
         () -> {
           UsbCamera camera = CameraServer.startAutomaticCapture();
-          camera.setResolution(640, 480);
+          camera.setResolution(1080, 720);
+
+          CvSink cvSink = CameraServer.getVideo();
+          CvSource outputStream = CameraServer.putVideo("Target", 640, 480);
+
+          Mat mat = new Mat();
+
+          final int[] targetBoxSize = { 100, 100 };
+
+          int targetOffset = 0;
+
+          while (!Thread.interrupted()) {
+            if (cvSink.grabFrame(mat) == 0) {
+              outputStream.notifyError(cvSink.getError());
+              continue;
+            }
+            targetOffset = (int) (Constants.controller.getRawAxis(Constants.powerAxis) * 100);
+            Imgproc.rectangle(mat,
+                new Point(
+                    (outputStream.getVideoMode().width - targetBoxSize[0]) / 2,
+                    (outputStream.getVideoMode().height - targetBoxSize[1]) / 2 + targetOffset),
+                new Point(
+                    (outputStream.getVideoMode().width + targetBoxSize[0]) / 2,
+                    (outputStream.getVideoMode().height + targetBoxSize[1]) / 2 + targetOffset),
+                new Scalar(255, 100, 100),
+                2);
+            Imgproc.putText(
+                mat,
+                String.valueOf(cV3.getProximity()),
+                new Point(100, 100),
+                0,
+                3,
+                new Scalar(cV3.getColor().blue * 255, cV3.getColor().green * 255, cV3.getColor().red * 255),
+                3);
+            outputStream.putFrame(mat);
+          }
         });
     m_VisionThread.setDaemon(true);
     m_VisionThread.start();
+
+    // Shuffleboard.getTab("LiveWindow").add("Pi", cV3);
   }
 
   /**
