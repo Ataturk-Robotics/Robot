@@ -28,16 +28,12 @@ public class DifferentialDriveCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // TODO: Question the mechanical about their sketchy wiring of the motors
-    // Why the hell to move the robot forward we need to set the right to -1 and the left to 1 ???????
-    // Is the right motor wired the wrong way around ??????
-    // Magic thing i came up with 2 years ago. This needs to change
     mDriveSubsystem.setRightMotor(
-        Constants.controller.getRawAxis(Constants.xAxis) +
-            Constants.controller.getRawAxis(Constants.yAxis));
+        Constants.controller.getRawAxis(Constants.yAxis) +
+            Constants.controller.getRawAxis(Constants.xAxis));
     mDriveSubsystem.setLeftMotor(
-        Constants.controller.getRawAxis(Constants.xAxis) -
-            Constants.controller.getRawAxis(Constants.yAxis));
+        Constants.controller.getRawAxis(Constants.yAxis)
+            - Constants.controller.getRawAxis(Constants.xAxis));
 
   }
 
