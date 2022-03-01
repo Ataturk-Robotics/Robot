@@ -6,7 +6,6 @@ package frc.robot.commands.Intake;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 
 public class ArmCommand extends CommandBase {
