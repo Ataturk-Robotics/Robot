@@ -9,10 +9,12 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.Climber.ClimberCommand;
 import frc.robot.commands.Drive.DriveCommand;
 import frc.robot.commands.Intake.ArmCommand;
 import frc.robot.commands.Intake.IntakeCommand;
 import frc.robot.commands.Shooter.ShooterCommand;
+import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
@@ -32,6 +34,7 @@ public class RobotContainer {
   IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
   DriveSubsystem driveSubsystem = new DriveSubsystem();
   ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
+  ClimberSubsystem climberSubsystem = new ClimberSubsystem();
 
   public RobotContainer() {
     // Configure the button bindings
@@ -43,6 +46,7 @@ public class RobotContainer {
     var intakeButton = new JoystickButton(Constants.controller, Constants.kIntakeButton);
     var shooterButton = new JoystickButton(Constants.controller, Constants.kShooterButton);
     var alignButton = new JoystickButton(Constants.controller, Constants.kAlignButton);
+    var climberButton = new JoystickButton(Constants.controller, Constants.kClimberButton);
 
     armButton.whenPressed(new ArmCommand(intakeSubsystem));
     intakeButton.whenHeld(new IntakeCommand(intakeSubsystem));
@@ -50,6 +54,7 @@ public class RobotContainer {
     alignButton.whenPressed(new SequentialCommandGroup(
         new RunCommand(() -> intakeSubsystem.setIntake(-0.3)).withTimeout(0.3),
         new RunCommand(() -> intakeSubsystem.setIntake(0)).withTimeout(0.1)));
+    climberButton.toggleWhenPressed(new ClimberCommand(climberSubsystem));
   }
 
   /**

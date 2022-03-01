@@ -34,6 +34,7 @@ public final class Constants {
     public static int kArmButton = 2;
     public static int kShooterButton = 1;
     public static int kAlignButton = 7;
+    public static int kClimberButton = 10;
     
     //The double solenoid used to control the pneumatic arm
     public static int[] kIntakeSolenoidPorts = { 2, 4 };
@@ -45,4 +46,6 @@ public final class Constants {
 
     public static int kRightMotorId = 11;
     public static int kLeftMotorId = 10;
+
+    public static int[] climberMotorIds = {12};
 }
