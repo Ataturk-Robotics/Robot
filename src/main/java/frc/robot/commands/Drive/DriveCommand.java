@@ -4,37 +4,31 @@
 
 package frc.robot.commands.Drive;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
 import frc.robot.subsystems.DriveSubsystem;
 
-public class DifferentialDriveCommand extends CommandBase {
-  private DriveSubsystem mDriveSubsystem;
+public class DriveCommand extends CommandBase {
+
+  DriveSubsystem mDriveSubsystem;
+  double speed;
 
   /** Creates a new DriveCommand. */
-  public DifferentialDriveCommand(DriveSubsystem subsystem) {
+  public DriveCommand(double _speed, DriveSubsystem subsystem) {
     mDriveSubsystem = subsystem;
+    speed = _speed;
     addRequirements(mDriveSubsystem);
-    // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    mDriveSubsystem.setRightMotor(speed);
+    mDriveSubsystem.setLeftMotor(speed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mDriveSubsystem.setRightMotor(
-        -(Constants.controller.getRawAxis(Constants.yAxis) +
-            Constants.controller.getRawAxis(Constants.xAxis)));
-    mDriveSubsystem.setLeftMotor(
-        -(Constants.controller.getRawAxis(Constants.yAxis)
-            - Constants.controller.getRawAxis(Constants.xAxis)));
-
   }
 
   // Called once the command ends or is interrupted.

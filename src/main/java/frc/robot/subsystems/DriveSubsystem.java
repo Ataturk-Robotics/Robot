@@ -34,14 +34,4 @@ public class DriveSubsystem extends SubsystemBase {
   public void setLeftMotor(double value) {
     leftMotor.set(ControlMode.PercentOutput, value);
   }
-
-  public void driveForwardForSeconds(double speed, double seconds) {
-    // TODO
-    throw new UnsupportedOperationException("Not implemented yet");
-  }
-
-  public void rotateForSeconds(double speed, double seconds) {
-    // TODO
-    throw new UnsupportedOperationException("Not implemented yet");
-  }
 }
