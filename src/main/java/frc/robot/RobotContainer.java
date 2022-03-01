@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.Drive.DriveCommand;
 import frc.robot.commands.Intake.ArmCommand;
 import frc.robot.commands.Intake.IntakeCommand;
 import frc.robot.commands.Intake.RollerCommand;
@@ -64,7 +65,19 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    // TODO: Autonomus Command
-    return null;
+    return new SequentialCommandGroup(
+        new RunCommand(() -> shooterSubsystem.setShooter(-0.7)).withTimeout(3),
+        new RunCommand(() -> intakeSubsystem.setIntake(0.5)).withTimeout(1),
+        new RunCommand(() -> intakeSubsystem.setIntake(0)).withTimeout(0.1), 
+        new RunCommand(()-> intakeSubsystem.setRoller(-0.5)).withTimeout(0.1),
+        new DriveCommand(0.5, driveSubsystem).withTimeout(1),
+        new WaitCommand(1.5),
+        new DriveCommand(-0.5, driveSubsystem).withTimeout(1),
+        new WaitCommand(1.5),
+        new RunCommand(()-> intakeSubsystem.setRoller(0)).withTimeout (0.1),
+        new RunCommand(() -> intakeSubsystem.setIntake(0.5)).withTimeout(1),
+        new RunCommand(() -> intakeSubsystem.setIntake(0)).withTimeout(1),
+        new RunCommand(() -> shooterSubsystem.setShooter(0)).withTimeout(1)
+    );
   }
 }
