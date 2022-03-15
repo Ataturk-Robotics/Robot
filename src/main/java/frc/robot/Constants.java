@@ -47,5 +47,5 @@ public final class Constants {
     public static int kRightMotorId = 11;
     public static int kLeftMotorId = 10;
 
-    public static int[] climberMotorIds = {12};
+    public static int[] climberMotorIds = {18, 19};
 }
