@@ -1,5 +1,7 @@
 # ROBOT 2022
 
+[![CI](https://github.com/Ataturk-Robotics/Robot/actions/workflows/ci.yml/badge.svg)](https://github.com/Ataturk-Robotics/Robot/actions/workflows/ci.yml)
+
 8240 Atatürk Robotics'in *2022* FRC robot kodu. 
 
 The code for the team 8240 Atatürk Robotics' *2022* FRC robot code.
