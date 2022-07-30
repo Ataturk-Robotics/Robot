@@ -6,13 +6,12 @@ package frc.robot.commands.Intake;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
-import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.RobotSubsystems.IntakeSubsystem;
 
 public class RollerCommand extends CommandBase {
 
   private IntakeSubsystem mIntakeSubsystem;
 
-  // TODO: Unused command. Remove if sure that both the intake and roller should be controlled by the same button
   public RollerCommand(IntakeSubsystem subsystem) {
     mIntakeSubsystem = subsystem;
     addRequirements(subsystem);

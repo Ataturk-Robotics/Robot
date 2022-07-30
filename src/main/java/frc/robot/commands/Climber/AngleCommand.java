@@ -5,7 +5,7 @@
 package frc.robot.commands.Climber;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.AngleSubsystem;
+import frc.robot.subsystems.RobotSubsystems.AngleSubsystem;
 
 public class AngleCommand extends CommandBase {
 

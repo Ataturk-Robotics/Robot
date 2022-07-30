@@ -4,23 +4,25 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
+import frc.robot.commands.Autonomous.AutonomousCommands.FiveAutoBlue3;
+import frc.robot.commands.Autonomous.Trajectorys.FiveAutoBlue3Trajectory;
 import frc.robot.commands.Climber.AngleCommand;
 import frc.robot.commands.Climber.ClimberCommand;
-import frc.robot.commands.Drive.DriveCommand;
 import frc.robot.commands.Intake.ArmCommand;
 import frc.robot.commands.Intake.IntakeCommand;
 import frc.robot.commands.Shooter.ShooterCommand;
-import frc.robot.subsystems.AngleSubsystem;
-import frc.robot.subsystems.ClimberSubsystem;
-import frc.robot.subsystems.DriveSubsystem;
-import frc.robot.subsystems.IntakeSubsystem;
-import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.RobotSubsystems.AngleSubsystem;
+import frc.robot.subsystems.RobotSubsystems.ClimberSubsystem;
+import frc.robot.subsystems.RobotSubsystems.DriveSubsystem;
+import frc.robot.subsystems.RobotSubsystems.IntakeSubsystem;
+import frc.robot.subsystems.RobotSubsystems.ShooterSubsystem;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -33,15 +35,24 @@ import frc.robot.subsystems.ShooterSubsystem;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-
+  
   IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
   DriveSubsystem driveSubsystem = new DriveSubsystem();
   ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
   ClimberSubsystem climberSubsystem = new ClimberSubsystem();
   AngleSubsystem angleSubsystem = new AngleSubsystem();
 
+  FiveAutoBlue3Trajectory fiveAutoBluePaths = new FiveAutoBlue3Trajectory(driveSubsystem);
+
+  static SendableChooser<Command> autoChooser = new SendableChooser<>();
+
   public RobotContainer() {
-    // Configure the button bindings
+    // Configure the button bindingsro
+    SmartDashboard.putData("autoChooser", autoChooser);
+
+    autoChooser.setDefaultOption("ChooseAutonomous", null);
+    autoChooser.addOption("fiveAutoBlue3", new FiveAutoBlue3(driveSubsystem, shooterSubsystem, intakeSubsystem, fiveAutoBluePaths));
+
     configureButtonBindings();
   }
 
@@ -72,19 +83,8 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
-    return new SequentialCommandGroup(
-        new RunCommand(() -> shooterSubsystem.setShooter(-0.7)).withTimeout(3),
-        new RunCommand(() -> intakeSubsystem.setIntake(0.5)).withTimeout(1),
-        new RunCommand(() -> intakeSubsystem.setIntake(0)).withTimeout(0.1),
-        new RunCommand(() -> intakeSubsystem.setRoller(-0.5)).withTimeout(0.1),
-        new DriveCommand(0.5, driveSubsystem).withTimeout(1),
-        new WaitCommand(1.5),
-        new DriveCommand(-0.5, driveSubsystem).withTimeout(1),
-        new WaitCommand(1.5),
-        new RunCommand(() -> intakeSubsystem.setRoller(0)).withTimeout(0.1),
-        new RunCommand(() -> intakeSubsystem.setIntake(0.5)).withTimeout(1),
-        new RunCommand(() -> intakeSubsystem.setIntake(0)).withTimeout(1),
-        new RunCommand(() -> shooterSubsystem.setShooter(0)).withTimeout(1));
+  public Command getAutonomousCommand() {    
+    return autoChooser.getSelected();
   }
+  
 }

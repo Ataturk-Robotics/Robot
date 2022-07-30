@@ -1,0 +1,15 @@
+{
+  "NetworkTables Settings": {
+    "mode": "Client",
+    "serverTeam": "localhost"
+  },
+  "SmartDashboard": {
+    "Field": {
+      "open": true
+    }
+  },
+  "connections": true,
+  "createNonCanonical": true,
+  "flags": true,
+  "timestamp": true
+}

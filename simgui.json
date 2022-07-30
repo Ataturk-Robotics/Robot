@@ -6,6 +6,31 @@
           "open": true
         }
       },
+      "Victor SPX[10]": {
+        "header": {
+          "open": true
+        }
+      },
+      "Victor SPX[11]": {
+        "header": {
+          "open": true
+        }
+      },
+      "Victor SPX[15]": {
+        "header": {
+          "open": true
+        }
+      },
+      "Victor SPX[16]": {
+        "header": {
+          "open": true
+        }
+      },
+      "Victor SPX[17]": {
+        "header": {
+          "open": true
+        }
+      },
       "Victor SPX[1]": {
         "header": {
           "open": true
@@ -23,8 +48,8 @@
       }
     },
     "RoboRIO": {
-      "window": {
-        "visible": true
+      "RoboRIO Input": {
+        "open": true
       }
     },
     "Solenoids": {
@@ -32,23 +57,78 @@
         "header": {
           "open": true
         }
-      },
+      }
+    },
+    "Timing": {
       "window": {
-        "visible": true
+        "visible": false
       }
     }
   },
   "NTProvider": {
     "types": {
       "/FMSInfo": "FMSInfo",
+      "/LiveWindow/AngleSubsystem": "Subsystem",
+      "/LiveWindow/ClimberSubsystem": "Subsystem",
       "/LiveWindow/DriveSubsystem": "Subsystem",
+      "/LiveWindow/Field": "Subsystem",
+      "/LiveWindow/FieldSubsystem": "Subsystem",
       "/LiveWindow/IntakeSubsystem": "Subsystem",
-      "/LiveWindow/Ungrouped/Scheduler": "Scheduler"
+      "/LiveWindow/ShooterSubsystem": "Subsystem",
+      "/LiveWindow/Ungrouped/ADXRS450_Gyro[0]": "Gyro",
+      "/LiveWindow/Ungrouped/AnalogGyro[0]": "Gyro",
+      "/LiveWindow/Ungrouped/AnalogGyro[1]": "Gyro",
+      "/LiveWindow/Ungrouped/DifferentialDrive[1]": "DifferentialDrive",
+      "/LiveWindow/Ungrouped/DigitalInput[0]": "Digital Input",
+      "/LiveWindow/Ungrouped/DigitalInput[1]": "Digital Input",
+      "/LiveWindow/Ungrouped/PIDController[10]": "PIDController",
+      "/LiveWindow/Ungrouped/PIDController[1]": "PIDController",
+      "/LiveWindow/Ungrouped/PIDController[2]": "PIDController",
+      "/LiveWindow/Ungrouped/PIDController[3]": "PIDController",
+      "/LiveWindow/Ungrouped/PIDController[4]": "PIDController",
+      "/LiveWindow/Ungrouped/PIDController[5]": "PIDController",
+      "/LiveWindow/Ungrouped/PIDController[6]": "PIDController",
+      "/LiveWindow/Ungrouped/PIDController[7]": "PIDController",
+      "/LiveWindow/Ungrouped/PIDController[8]": "PIDController",
+      "/LiveWindow/Ungrouped/PIDController[9]": "PIDController",
+      "/LiveWindow/Ungrouped/Scheduler": "Scheduler",
+      "/LiveWindow/Ungrouped/Victor SPX [10]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Victor SPX [11]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Victor SPX [12]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Victor SPX [13]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Victor SPX [15]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Victor SPX [16]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Victor SPX [17]": "Motor Controller",
+      "/SmartDashboard/Field": "Field2d",
+      "/SmartDashboard/Field2d": "Field2d",
+      "/SmartDashboard/Motor": "Motor Controller",
+      "/SmartDashboard/SendableChooser[0]": "String Chooser",
+      "/SmartDashboard/leftMotor": "Motor Controller",
+      "/SmartDashboard/rightMotor": "Motor Controller"
+    },
+    "windows": {
+      "/FMSInfo": {
+        "window": {
+          "visible": true
+        }
+      }
     }
   },
   "NetworkTables": {
     "CameraPublisher": {
       "USB Camera 0": {
+        "open": true
+      },
+      "open": true
+    },
+    "LiveWindow": {
+      "IntakeSubsystem": {
+        "open": true
+      },
+      "Ungrouped": {
+        "Victor SPX [17]": {
+          "open": true
+        },
         "open": true
       },
       "open": true

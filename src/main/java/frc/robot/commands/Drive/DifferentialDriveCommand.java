@@ -6,7 +6,7 @@ package frc.robot.commands.Drive;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
-import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.RobotSubsystems.DriveSubsystem;
 
 public class DifferentialDriveCommand extends CommandBase {
   private DriveSubsystem mDriveSubsystem;
@@ -38,8 +38,7 @@ public class DifferentialDriveCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    mDriveSubsystem.setRightMotor(0);
-    mDriveSubsystem.setLeftMotor(0);
+    mDriveSubsystem.stop();
   }
 
   // Returns true when the command should end.

@@ -4,16 +4,13 @@
 
 package frc.robot;
 
-import org.opencv.core.*;
-import org.opencv.imgproc.Imgproc;
-
-import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.cscore.CvSink;
-import edu.wpi.first.cscore.CvSource;
-import edu.wpi.first.cscore.UsbCamera;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.Field2d;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
@@ -27,11 +24,16 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  * project.
  */
 public class Robot extends TimedRobot {
-  private Command m_autonomousCommand;
-
-  private RobotContainer m_robotContainer;
+  private Command autonomousCommand;
+  
+  private RobotContainer robotContainer;
 
   Thread m_VisionThread;
+
+  Field2d field;
+
+  Timer timer;
+  
 
   @Override
   public void robotInit() {
@@ -42,44 +44,15 @@ public class Robot extends TimedRobot {
     Compressor comp = new Compressor(PneumaticsModuleType.CTREPCM);
     comp.disable();
 
-    m_robotContainer = new RobotContainer();
+    robotContainer = new RobotContainer();
 
-    m_VisionThread = new Thread(
-        () -> {
-          UsbCamera camera = CameraServer.startAutomaticCapture();
-          camera.setResolution(1080, 720);
+    field = new Field2d();
+    SmartDashboard.putData("Field", field);
 
-          CvSink cvSink = CameraServer.getVideo();
-          CvSource outputStream = CameraServer.putVideo("Target", 640, 480);
+    field.setRobotPose(0, 0, new Rotation2d(0));
 
-          Mat mat = new Mat();
-
-          final int[] targetBoxSize = { 100, 100 };
-
-          int targetOffset = 0;
-
-          while (!Thread.interrupted()) {
-            if (cvSink.grabFrame(mat) == 0) {
-              outputStream.notifyError(cvSink.getError());
-              continue;
-            }
-            targetOffset = (int) (Constants.controller.getRawAxis(Constants.powerAxis) * 100);
-            Imgproc.rectangle(mat,
-                new Point(
-                    (outputStream.getVideoMode().width - targetBoxSize[0]) / 2,
-                    (outputStream.getVideoMode().height - targetBoxSize[1]) / 2 + targetOffset),
-                new Point(
-                    (outputStream.getVideoMode().width + targetBoxSize[0]) / 2,
-                    (outputStream.getVideoMode().height + targetBoxSize[1]) / 2 + targetOffset),
-                new Scalar(255, 100, 100),
-                2);
-            outputStream.putFrame(mat);
-          }
-        });
-    m_VisionThread.setDaemon(true);
-    m_VisionThread.start();
-
-    // Shuffleboard.getTab("LiveWindow").add("Pi", cV3);
+    timer = new Timer();
+    testPeriodic();
   }
 
   /**
@@ -93,6 +66,12 @@ public class Robot extends TimedRobot {
    * and
    * SmartDashboard integrated updating.
    */
+
+  @Override
+  public void simulationPeriodic(){
+  }
+
+
   @Override
   public void robotPeriodic() {
     // Runs the Scheduler. This is responsible for polling buttons, adding
@@ -120,17 +99,28 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+    timer.reset();
+    timer.start();
+    
+    autonomousCommand = robotContainer.getAutonomousCommand();
 
     // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.schedule();
+    if (autonomousCommand != null) {
+      autonomousCommand.schedule();
     }
+
   }
 
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
+    System.out.println(timer.get());
+
+    if(timer.get() > 20){
+      autonomousCommand.cancel();
+      teleopInit();
+    }
+
   }
 
   @Override
@@ -139,8 +129,9 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
+
+    if (autonomousCommand != null) {
+      autonomousCommand.cancel();
     }
   }
 
@@ -158,5 +149,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during test mode. */
   @Override
   public void testPeriodic() {
+    field.setRobotPose(0, 0, new Rotation2d(0));
   }
 }
+

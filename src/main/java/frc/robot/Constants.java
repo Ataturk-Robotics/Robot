@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.wpilibj.XboxController;
 
 /**
@@ -19,6 +20,47 @@ import edu.wpi.first.wpilibj.XboxController;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+
+    public static boolean tuningMode = false;
+    public static final RobotType defaultRobot = RobotType.ROBOT_2022;
+    private static RobotType robot;
+
+    public static final boolean flatTarget = false;
+
+    public static final double fieldLength = 52 * 12 + 5.25;
+    public static final double fieldWidth = 26 * 12 + 11.25;
+    public static final double initiationLine = 120;
+    public static final double visionTargetHorizDist = 43.75 + 24;
+    public static final double innerPortDepth = 29.26;
+    public static final double trenchRunWidth = (4 * 12) + 7.5;
+
+    public static final int[] kLeftEncoderPorts = new int[] {4, 5};
+    public static final int[] kRightEncoderPorts = new int[] {2, 3};
+    public static final boolean kLeftEncoderReversed = false;
+    public static final boolean kRightEncoderReversed = true;
+
+    public static final int kEncoderCPR = 1024;
+    public static final double kWheelDiameterMeters = 0.15;
+    public static final double kEncoderDistancePerPulse =
+        // Assumes the encoders are directly mounted on the wheel shafts
+        (kWheelDiameterMeters * Math.PI) / (double) kEncoderCPR;
+
+    public static final double ksVolts = 0.22;
+    public static final double kvVoltSecondsPerMeter = 1.98;
+    public static final double kaVoltSecondsSquaredPerMeter = 0.2;
+
+    public static final double kTrackwidthMeters = 0.69;
+    public static final DifferentialDriveKinematics kDriveKinematics =
+        new DifferentialDriveKinematics(kTrackwidthMeters);
+
+    public static final double kMaxSpeedMetersPerSecond = 3;
+    public static final double kMaxAccelerationMetersPerSecondSquared = 3;
+        
+    public static final double kRamseteB = 2;
+    public static final double kRamseteZeta = 0.7;
+
+    public static final double kPDriveVel = 8;
+
 
     // The controller itself
     private static int kXboxControllerPort = 0;    
@@ -48,4 +90,21 @@ public final class Constants {
     public static int kLeftMotorId = 10;
 
     public static int[] climberMotorIds = {18, 19};
+    
+    public static double fieldLenght;
+
+    public static RobotType getRobot() {
+        return robot;
+    }
+
+    public static void setRobot(RobotType robot) {
+        if (Constants.robot == null) {
+            Constants.robot = robot;
+        }
+    }
+
+    public enum RobotType {
+        ROBOT_2022
+    }
 }
+
