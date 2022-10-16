@@ -74,7 +74,8 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     return new SequentialCommandGroup(
-        new RunCommand(() -> shooterSubsystem.setShooter(-0.7)).withTimeout(3),
+        new RunCommand(() -> intakeSubsystem.dropArm()).withTimeout(0.1),
+        new RunCommand(() -> shooterSubsystem.setShooter(-0.8240)).withTimeout(3),
         new RunCommand(() -> intakeSubsystem.setIntake(0.5)).withTimeout(1),
         new RunCommand(() -> intakeSubsystem.setIntake(0)).withTimeout(0.1),
         new RunCommand(() -> intakeSubsystem.setRoller(-0.5)).withTimeout(0.1),
