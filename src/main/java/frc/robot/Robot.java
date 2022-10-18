@@ -11,6 +11,9 @@ import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.CvSink;
 import edu.wpi.first.cscore.CvSource;
 import edu.wpi.first.cscore.UsbCamera;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -32,6 +35,11 @@ public class Robot extends TimedRobot {
   private RobotContainer m_robotContainer;
 
   Thread m_VisionThread;
+
+  private NetworkTable vision;
+  private NetworkTableEntry xEntry;
+  private NetworkTableEntry isTargetFound;
+
 
   @Override
   public void robotInit() {
@@ -78,6 +86,11 @@ public class Robot extends TimedRobot {
         });
     m_VisionThread.setDaemon(true);
     m_VisionThread.start();
+
+    NetworkTableInstance inst = NetworkTableInstance.getDefault();
+    vision = inst.getTable("/vision");
+    xEntry = vision.getEntry("CenterX");
+    isTargetFound = vision.getEntry("isTargetFound");
 
     // Shuffleboard.getTab("LiveWindow").add("Pi", cV3);
   }
@@ -147,6 +160,8 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
+    Constants.kCenterX = xEntry.getDouble(0);
+    Constants.kTargetFound = isTargetFound.getDouble(0);
   }
 
   @Override

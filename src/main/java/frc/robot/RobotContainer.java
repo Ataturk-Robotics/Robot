@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import frc.robot.commands.Climber.AngleCommand;
 import frc.robot.commands.Climber.ClimberCommand;
+import frc.robot.commands.Drive.Aim;
 import frc.robot.commands.Drive.DriveCommand;
 import frc.robot.commands.Intake.ArmCommand;
 import frc.robot.commands.Intake.IntakeCommand;
@@ -51,6 +52,7 @@ public class RobotContainer {
     var shooterButton = new JoystickButton(Constants.controller, Constants.kShooterButton);
     var alignButton = new JoystickButton(Constants.controller, Constants.kAlignButton);
     var climberButton = new JoystickButton(Constants.controller, Constants.kClimberButton);
+    var aimButton = new JoystickButton(Constants.controller, Constants.kAimButton);
 
     var topPOV = new POVButton(Constants.controller, 0);
     var bottomPOV = new POVButton(Constants.controller, 180);
@@ -62,6 +64,7 @@ public class RobotContainer {
         new RunCommand(() -> intakeSubsystem.setIntake(-0.3)).withTimeout(0.3),
         new RunCommand(() -> intakeSubsystem.setIntake(0)).withTimeout(0.1)));
     climberButton.toggleWhenPressed(new ClimberCommand(climberSubsystem));
+    aimButton.whenHeld(new Aim(driveSubsystem, Constants.kTargetFound ,Constants.kCenterX));
 
     topPOV.whenHeld(new AngleCommand(angleSubsystem, 1));
     bottomPOV.whenHeld(new AngleCommand(angleSubsystem, -1));

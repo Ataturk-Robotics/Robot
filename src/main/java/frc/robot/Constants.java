@@ -35,9 +35,15 @@ public final class Constants {
     public static int kShooterButton = 1;
     public static int kAlignButton = 7;
     public static int kClimberButton = 10;
+    public static int kAimButton = 4;
+
+    public static double kAimP = 1;
     
     //The double solenoid used to control the pneumatic arm
     public static int[] kIntakeSolenoidPorts = { 2, 4 };
+
+    public static double kCenterX;
+    public static double kTargetFound = 0;
 
     //Motor Id's
     public static int rollerMotorId = 13;
