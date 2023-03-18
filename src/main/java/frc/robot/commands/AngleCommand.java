@@ -2,40 +2,36 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands.Climber;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.RobotSubsystems.AngleSubsystem;
+import frc.robot.Constants.JoystickConstants;
+import frc.robot.subsystems.AngleSubsystem;
 
 public class AngleCommand extends CommandBase {
 
-  private AngleSubsystem mAngleSubsystem;
-  private int direction;
+  AngleSubsystem angleSubsystem;
 
   /** Creates a new AngleCommand. */
-  public AngleCommand(AngleSubsystem subsystem, int directionM) {
-    mAngleSubsystem = subsystem;
-    direction = directionM;
-    addRequirements(mAngleSubsystem);
+  public AngleCommand(AngleSubsystem angleSubsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
+    this.angleSubsystem = angleSubsystem;
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    
-    mAngleSubsystem.setAngleMotor(0.4 * direction);
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    angleSubsystem.setAngleMotor(JoystickConstants.ps4Controller.getRawAxis(JoystickConstants.Ps4yAxis));
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    mAngleSubsystem.setAngleMotor(0);
+    angleSubsystem.setAngleMotor(0);
   }
 
   // Returns true when the command should end.

@@ -7,25 +7,24 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.AtarobGyro;
 import frc.robot.Constants.SubsystemConstants;
-import frc.robot.commands.AngleCommand;
+import frc.robot.commands.TurretCommand;
 
-public class AngleSubsystem extends SubsystemBase {
+public class TurretSubsystem extends SubsystemBase {
 
-  WPI_VictorSPX angleMotors[] = {
-    new WPI_VictorSPX(SubsystemConstants.angleMotorIds[0]),
-    new WPI_VictorSPX(SubsystemConstants.angleMotorIds[1])
-  };
+  WPI_VictorSPX turretMotor = new WPI_VictorSPX(SubsystemConstants.turretMotorId);
+  AtarobGyro  gyro = new AtarobGyro();
 
-
-  /** Creates a new AngleSubsystem. */
-  public AngleSubsystem() {
-    setDefaultCommand(new AngleCommand(this));
+  /** Creates a new TurretSubsystem. */
+  public TurretSubsystem() {
+    setDefaultCommand(new TurretCommand(this));
   }
 
-  public void setAngleMotor(double speed){
-    angleMotors[0].set(speed);
-    angleMotors[1].set(-speed);
+  public void setTurretMotor(double speed){
+    if(gyro.getAngle() < 180 & gyro.getAngle() > -180){
+      turretMotor.set(speed);
+    }
   }
 
   @Override

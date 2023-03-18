@@ -1,0 +1,974 @@
+{
+	"objects": [
+		{
+			"id":4,
+			"type":4,
+			"name":"Top",
+			"global pos":[-1.266,-0.01097685,-4.384471],
+			"global rot":[-0.0007423562,180,0]
+		},
+		{
+			"id":6,
+			"type":4,
+			"name":"side (2)",
+			"global pos":[-1.266,-0.03177804,-4.376451],
+			"global rot":[358.0465,-4.288206E-08,9.412616E-08]
+		},
+		{
+			"id":5,
+			"type":4,
+			"name":"side (1)",
+			"global pos":[-1.266,-0.03179926,-4.3925],
+			"global rot":[358.043,180,-1.002101E-07]
+		},
+		{
+			"id":2,
+			"type":4,
+			"name":"side (1)",
+			"global pos":[-1.266,-0.03179547,4.390498],
+			"global rot":[358.0433,-4.282825E-08,-4.346452E-08]
+		},
+		{
+			"id":1,
+			"type":4,
+			"name":"Top",
+			"global pos":[-1.266,-0.01097684,4.382471],
+			"global rot":[-0.000731684,0,0]
+		},
+		{
+			"id":3,
+			"type":4,
+			"name":"side (2)",
+			"global pos":[-1.266,-0.03177738,4.374452],
+			"global rot":[358.0465,180,3.419896E-11]
+		},
+		{
+			"id":121,
+			"type":1,
+			"name":"FRCCube (2)",
+			"global pos":[-3.103,0.1091023,-1.2],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":137,
+			"type":1,
+			"name":"FRCCube",
+			"global pos":[0.5643854,0.1091023,1.2],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":131,
+			"type":1,
+			"name":"FRCCube (3)",
+			"global pos":[0.5643854,0.1091023,-1.2],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":103,
+			"type":1,
+			"name":"FRCCube (1)",
+			"global pos":[-3.103,0.1091023,1.2],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":147,
+			"type":3,
+			"name":"FRCCone (1)",
+			"global pos":[-0.651,0.0005080439,1.2],
+			"global rot":[-2.93119E-10,5.497009E-06,-1.886644E-08],
+			"velocity":[2.342061E-07,-6.780028E-07,6.050799E-08],
+			"rot velocity":[5.112314E-07,7.13945E-08,-5.893436E-06]
+		},
+		{
+			"id":136,
+			"type":3,
+			"name":"FRCCone",
+			"global pos":[-1.874314,0.0005080514,1.2],
+			"global rot":[1.634469E-07,-4.956169E-08,1.107217E-06],
+			"velocity":[-2.489977E-10,0,7.3291E-10],
+			"rot velocity":[1.832386E-08,-1.954081E-11,6.130929E-09]
+		},
+		{
+			"id":177,
+			"type":3,
+			"name":"FRCCone (3)",
+			"global pos":[-1.874314,0.0005080514,-1.2],
+			"global rot":[-2.998169E-08,-5.275669E-08,1.22062E-06],
+			"velocity":[-6.188138E-10,0,-4.598862E-10],
+			"rot velocity":[-8.221005E-09,-7.234976E-10,1.297426E-08]
+		},
+		{
+			"id":116,
+			"type":3,
+			"name":"FRCCone (2)",
+			"global pos":[-0.651,0.0005080439,-1.2],
+			"global rot":[1.472554E-06,-1.706919E-06,-1.074347E-06],
+			"velocity":[3.292332E-07,-1.162291E-06,6.88707E-08],
+			"rot velocity":[6.155692E-07,-5.985513E-08,-8.09685E-06]
+		},
+		{
+			"id":133,
+			"type":1,
+			"name":"FRCCube (8)",
+			"global pos":[3.988,0.569,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":162,
+			"type":1,
+			"name":"FRCCube (3)",
+			"global pos":[3.74,0.569,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":142,
+			"type":1,
+			"name":"FRCCube (5)",
+			"global pos":[3.681,0.1097234,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":170,
+			"type":1,
+			"name":"FRCCube (12)",
+			"global pos":[3.929,0.569,-9.903],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":164,
+			"type":1,
+			"name":"FRCCube (10)",
+			"global pos":[3.929,0.7982766,-9.903],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":135,
+			"type":1,
+			"name":"FRCCube (5)",
+			"global pos":[3.988,0.1097234,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":149,
+			"type":1,
+			"name":"FRCCube (19)",
+			"global pos":[3.865,0.339,9.666],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":143,
+			"type":1,
+			"name":"FRCCube (6)",
+			"global pos":[3.681,0.7982766,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":167,
+			"type":1,
+			"name":"FRCCube (14)",
+			"global pos":[3.681,0.569,-9.903],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":122,
+			"type":1,
+			"name":"FRCCube (1)",
+			"global pos":[3.74,0.1097234,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":192,
+			"type":1,
+			"name":"FRCCube (16)",
+			"global pos":[3.988,0.7982766,9.903],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":189,
+			"type":1,
+			"name":"FRCCube (2)",
+			"global pos":[3.74,0.339,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":193,
+			"type":1,
+			"name":"FRCCube (13)",
+			"global pos":[3.988,0.339,9.903],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":141,
+			"type":1,
+			"name":"FRCCube (8)",
+			"global pos":[3.681,0.569,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":172,
+			"type":1,
+			"name":"FRCCube (18)",
+			"global pos":[3.804,0.7982766,-9.666],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":132,
+			"type":1,
+			"name":"FRCCube (6)",
+			"global pos":[3.988,0.7982766,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":195,
+			"type":1,
+			"name":"FRCCube (12)",
+			"global pos":[3.74,0.569,9.903],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":139,
+			"type":1,
+			"name":"FRCCube (2)",
+			"global pos":[3.929,0.339,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":169,
+			"type":1,
+			"name":"FRCCube (16)",
+			"global pos":[3.681,0.7982766,-9.903],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":109,
+			"type":1,
+			"name":"FRCCube (4)",
+			"global pos":[3.74,0.7982766,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":190,
+			"type":1,
+			"name":"FRCCube (17)",
+			"global pos":[3.865,0.1097234,9.666],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":176,
+			"type":1,
+			"name":"FRCCube (20)",
+			"global pos":[3.865,0.569,9.666],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":166,
+			"type":1,
+			"name":"FRCCube (13)",
+			"global pos":[3.681,0.339,-9.903],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":144,
+			"type":1,
+			"name":"FRCCube (7)",
+			"global pos":[3.681,0.339,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":191,
+			"type":1,
+			"name":"FRCCube (11)",
+			"global pos":[3.74,0.339,9.903],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":140,
+			"type":1,
+			"name":"FRCCube (3)",
+			"global pos":[3.929,0.569,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":188,
+			"type":1,
+			"name":"FRCCube (20)",
+			"global pos":[3.804,0.569,-9.666],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":194,
+			"type":1,
+			"name":"FRCCube (14)",
+			"global pos":[3.988,0.569,9.903],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":168,
+			"type":1,
+			"name":"FRCCube (15)",
+			"global pos":[3.681,0.1097234,-9.903],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":138,
+			"type":1,
+			"name":"FRCCube (1)",
+			"global pos":[3.929,0.1097234,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":184,
+			"type":1,
+			"name":"FRCCube (4)",
+			"global pos":[3.929,0.7982766,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":163,
+			"type":1,
+			"name":"FRCCube (9)",
+			"global pos":[3.929,0.1097234,-9.903],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":198,
+			"type":1,
+			"name":"FRCCube (10)",
+			"global pos":[3.74,0.7982766,9.903],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":196,
+			"type":1,
+			"name":"FRCCube (15)",
+			"global pos":[3.988,0.1097234,9.903],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":134,
+			"type":1,
+			"name":"FRCCube (7)",
+			"global pos":[3.988,0.339,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":165,
+			"type":1,
+			"name":"FRCCube (11)",
+			"global pos":[3.929,0.339,-9.903],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":187,
+			"type":1,
+			"name":"FRCCube (19)",
+			"global pos":[3.804,0.339,-9.666],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":197,
+			"type":1,
+			"name":"FRCCube (9)",
+			"global pos":[3.74,0.1097234,9.903],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":171,
+			"type":1,
+			"name":"FRCCube (17)",
+			"global pos":[3.804,0.1097234,-9.666],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":108,
+			"type":1,
+			"name":"FRCCube (18)",
+			"global pos":[-3.15814,0.1091022,-5.688338],
+			"global rot":[357.0885,269.9247,356.402],
+			"velocity":[2.822549E-05,-1.490116E-06,-1.804842E-05],
+			"rot velocity":[-0.0001677941,1.122899E-07,-0.0002624016]
+		},
+		{
+			"id":145,
+			"type":3,
+			"name":"FRCCone (17)",
+			"global pos":[3.38,0.4872701,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":178,
+			"type":3,
+			"name":"FRCCone (5)",
+			"global pos":[3.38,0.1240701,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":127,
+			"type":3,
+			"name":"FRCCone (24)",
+			"global pos":[3.38,0.6716701,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":159,
+			"type":3,
+			"name":"FRCCone (8)",
+			"global pos":[3.347,0.18567,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":161,
+			"type":3,
+			"name":"FRCCone (23)",
+			"global pos":[3.347,0.64,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":110,
+			"type":3,
+			"name":"FRCCone (16)",
+			"global pos":[3.38,0.4256,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":148,
+			"type":3,
+			"name":"FRCCone (4)",
+			"global pos":[3.38,0.0928,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":117,
+			"type":3,
+			"name":"FRCCone (5)",
+			"global pos":[3.347,0.1240701,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":115,
+			"type":3,
+			"name":"FRCCone (12)",
+			"global pos":[3.38,0.2711299,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":129,
+			"type":3,
+			"name":"FRCCone (20)",
+			"global pos":[3.347,0.61007,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":155,
+			"type":3,
+			"name":"FRCCone (22)",
+			"global pos":[3.38,0.5488701,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":120,
+			"type":3,
+			"name":"FRCCone (3)",
+			"global pos":[3.38,0.06287006,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":157,
+			"type":3,
+			"name":"FRCCone (17)",
+			"global pos":[3.347,0.4872701,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":146,
+			"type":3,
+			"name":"FRCCone (18)",
+			"global pos":[3.38,0.5788,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":126,
+			"type":3,
+			"name":"FRCCone (23)",
+			"global pos":[3.38,0.64,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":104,
+			"type":3,
+			"name":"FRCCone (2)",
+			"global pos":[3.38,0.0312,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":151,
+			"type":3,
+			"name":"FRCCone (9)",
+			"global pos":[3.347,0.2412,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":175,
+			"type":3,
+			"name":"FRCCone (11)",
+			"global pos":[3.347,0.364,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":150,
+			"type":3,
+			"name":"FRCCone (3)",
+			"global pos":[3.347,0.06287006,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":125,
+			"type":3,
+			"name":"FRCCone (15)",
+			"global pos":[3.347,0.39393,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":114,
+			"type":3,
+			"name":"FRCCone (13)",
+			"global pos":[3.38,0.3028,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":113,
+			"type":3,
+			"name":"FRCCone (11)",
+			"global pos":[3.38,0.364,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":123,
+			"type":3,
+			"name":"FRCCone (13)",
+			"global pos":[3.347,0.3028,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":180,
+			"type":3,
+			"name":"FRCCone (1)",
+			"global pos":[3.347,0.001270056,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":182,
+			"type":3,
+			"name":"FRCCone (24)",
+			"global pos":[3.347,0.6716701,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":107,
+			"type":3,
+			"name":"FRCCone (2)",
+			"global pos":[3.347,0.0312,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":112,
+			"type":3,
+			"name":"FRCCone (15)",
+			"global pos":[3.38,0.39393,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":105,
+			"type":3,
+			"name":"FRCCone (7)",
+			"global pos":[3.38,0.154,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":124,
+			"type":3,
+			"name":"FRCCone (14)",
+			"global pos":[3.347,0.4555299,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":130,
+			"type":3,
+			"name":"FRCCone (22)",
+			"global pos":[3.347,0.5488701,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":183,
+			"type":3,
+			"name":"FRCCone (25)",
+			"global pos":[3.347,0.7272,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":181,
+			"type":3,
+			"name":"FRCCone (4)",
+			"global pos":[3.347,0.0928,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":173,
+			"type":3,
+			"name":"FRCCone (16)",
+			"global pos":[3.347,0.4256,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":118,
+			"type":3,
+			"name":"FRCCone (7)",
+			"global pos":[3.347,0.154,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":160,
+			"type":3,
+			"name":"FRCCone (10)",
+			"global pos":[3.347,0.3327299,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":106,
+			"type":3,
+			"name":"FRCCone (8)",
+			"global pos":[3.38,0.18567,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":156,
+			"type":3,
+			"name":"FRCCone (1)",
+			"global pos":[3.38,0.001270056,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":102,
+			"type":3,
+			"name":"FRCCone (10)",
+			"global pos":[3.38,0.3327299,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":152,
+			"type":3,
+			"name":"FRCCone (19)",
+			"global pos":[3.38,0.5172,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":153,
+			"type":3,
+			"name":"FRCCone (20)",
+			"global pos":[3.38,0.61007,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":111,
+			"type":3,
+			"name":"FRCCone (14)",
+			"global pos":[3.38,0.4555299,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":179,
+			"type":3,
+			"name":"FRCCone (6)",
+			"global pos":[3.38,0.2156,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":154,
+			"type":3,
+			"name":"FRCCone (21)",
+			"global pos":[3.38,0.7016,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":119,
+			"type":3,
+			"name":"FRCCone (6)",
+			"global pos":[3.347,0.2156,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":186,
+			"type":3,
+			"name":"FRCCone (21)",
+			"global pos":[3.347,0.7016,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":158,
+			"type":3,
+			"name":"FRCCone (18)",
+			"global pos":[3.347,0.5788,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":128,
+			"type":3,
+			"name":"FRCCone (25)",
+			"global pos":[3.38,0.7272,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":174,
+			"type":3,
+			"name":"FRCCone (12)",
+			"global pos":[3.347,0.2711299,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":101,
+			"type":3,
+			"name":"FRCCone (9)",
+			"global pos":[3.38,0.2412,10.14],
+			"global rot":[0,0,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":185,
+			"type":3,
+			"name":"FRCCone (19)",
+			"global pos":[3.347,0.5172,-10.14],
+			"global rot":[0,180,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":604,
+			"type":10,
+			"name":"RedRight",
+			"global pos":[-2.757,0.7,-4.381],
+			"global rot":[0,348.0625,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":601,
+			"type":10,
+			"name":"Center",
+			"global pos":[0,0.7,0],
+			"global rot":[0,348.0625,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":602,
+			"type":10,
+			"name":"BlueLeft",
+			"global pos":[0.18,0.7,4.359],
+			"global rot":[0,348.0625,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":605,
+			"type":10,
+			"name":"RedLeft",
+			"global pos":[0.13,0.7,-4.43],
+			"global rot":[0,348.0625,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+		{
+			"id":603,
+			"type":10,
+			"name":"BlueRight",
+			"global pos":[-2.751,0.7,4.393],
+			"global rot":[0,348.0625,0],
+			"velocity":[0,0,0],
+			"rot velocity":[0,0,0]
+		},
+{}
+	]
+}

@@ -1,15 +1,14 @@
 {
-  "NetworkTables Settings": {
-    "mode": "Client",
-    "serverTeam": "localhost"
+  "Connections": {
+    "open": true
   },
-  "SmartDashboard": {
-    "Field": {
-      "open": true
-    }
+  "Persistent Values": {
+    "open": false
   },
-  "connections": true,
-  "createNonCanonical": true,
-  "flags": true,
-  "timestamp": true
+  "Retained Values": {
+    "open": false
+  },
+  "Transitory Values": {
+    "open": false
+  }
 }
