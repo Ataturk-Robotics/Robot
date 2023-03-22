@@ -21,8 +21,8 @@ public final class Constants {
         // * Xbox
         private static int kXboxControllerPort = 0;
         public static XboxController xBoxController = new XboxController(kXboxControllerPort);
-        public static int xBoxXAxis = 0;
-        public static int xBoxyAxis = 1;
+        public static int xBoxXAxis = 1;
+        public static int xBoxyAxis = 0;
         public static int xBoxpowerAxis = 3;
 
         // * PS4
@@ -30,29 +30,32 @@ public final class Constants {
         public static PS4Controller ps4Controller = new PS4Controller(kPs4ControllerPort);
         public static int Ps4XAxis = 0;
         public static int Ps4yAxis = 1;
+        public static int ps4ZAxis = 5;
     }
     
 
     public static final class DriveConstants{
         // Drive Motors
-        public static int[] leftMotorIds = {10, 11};
-        public static int[] rightMotorIds = {17, 13};
+        public static int[] leftMotorIds = {1, 0};
+        public static int[] rightMotorIds = {14, 4};
 
         public static final boolean kMotorsInverted = true;
 
         // * Encoders
-        public static final int[] kLeftEncoderPorts = {};
+        public static final int[] kLeftEncoderPorts = {6, 7};
         public static boolean kLeftEncoderReversed = true;
 
-        public static final int[] kRightEncoderPorts = {};
+        public static final int[] kRightEncoderPorts = {8, 9};
         public static boolean kRightEncoderReversed = true;
 
         public static final double kEncoderDistancePerPulse = 1.0/4.0; 
     }
 
     public static final class SubsystemConstants{
-        public static int[] angleMotorIds = {};
-        public static int turretMotorId = 9;
+        public static int[] angleMotorIds = {4, 6};
+        public static int turretMotorId = 19;
+        public static int[] armMotorIds = {5, 7};
+        public static int intakeMotorId = 8;
     }
 
     

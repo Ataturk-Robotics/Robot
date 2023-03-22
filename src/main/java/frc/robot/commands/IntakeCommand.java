@@ -5,34 +5,35 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants.JoystickConstants;
-import frc.robot.subsystems.TurretSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
 
-public class TurretCommand extends CommandBase {
+public class IntakeCommand extends CommandBase {
 
-  TurretSubsystem turretSubsystem;
+  IntakeSubsystem intakeSubsystem;
+  double speed;
 
-  /** Creates a new TurretCommand. */
-  public TurretCommand(TurretSubsystem turretSubsystem) {
+  /** Creates a new IntakeCommand. */
+  public IntakeCommand(IntakeSubsystem intakeSubsystem, double speed) {
     // Use addRequirements() here to declare subsystem dependencies.
-    this.turretSubsystem = turretSubsystem;
-    addRequirements(this.turretSubsystem);
+    this.intakeSubsystem = intakeSubsystem;
+    this.speed = speed;
+    addRequirements(this.intakeSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    intakeSubsystem.setIntakeMotor(speed);
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    turretSubsystem.setTurretMotor(-0.75 * JoystickConstants.ps4Controller.getRawAxis(JoystickConstants.Ps4XAxis));
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    turretSubsystem.setTurretMotor(0);
+    intakeSubsystem.setIntakeMotor(0);
   }
 
   // Returns true when the command should end.

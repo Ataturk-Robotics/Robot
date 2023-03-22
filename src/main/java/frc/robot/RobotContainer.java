@@ -5,13 +5,21 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.PS4Controller;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.Constants.JoystickConstants;
+import frc.robot.commands.IntakeCommand;
+import frc.robot.commands.PneumaticCommand;
 import frc.robot.subsystems.AngleSubsystem;
+import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.TurretSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -24,6 +32,8 @@ public class RobotContainer {
   DriveSubsystem driveSubsystem = new DriveSubsystem();
   AngleSubsystem angleSubsystem = new AngleSubsystem();
   TurretSubsystem turretSubsystem = new TurretSubsystem();
+  ArmSubsystem armSubsystem = new ArmSubsystem();
+  IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
 
   // The robot's subsystems and commands are defined here...
 
@@ -40,7 +50,13 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    var intakeButton = new JoystickButton(JoystickConstants.ps4Controller, PS4Controller.Button.kCross.value);
+    var outIntakebutton = new JoystickButton(JoystickConstants.ps4Controller, PS4Controller.Button.kCircle.value);
+    var pneumaticButton = new JoystickButton(JoystickConstants.ps4Controller, PS4Controller.Button.kTriangle.value);
     
+    intakeButton.whenHeld(new IntakeCommand(intakeSubsystem, 1));
+    outIntakebutton.whenHeld(new IntakeCommand(intakeSubsystem, -1));
+    pneumaticButton.whenPressed(new PneumaticCommand(intakeSubsystem));
   }
 
   /**
@@ -51,7 +67,7 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     return new SequentialCommandGroup(
-      new RunCommand(() -> driveSubsystem.drive(1, 1))
+      new RunCommand(() -> driveSubsystem.tankDrive(1, 1))
     );
   }
 }

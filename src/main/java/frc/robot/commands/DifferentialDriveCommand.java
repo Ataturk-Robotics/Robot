@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.JoystickConstants;
 import frc.robot.subsystems.DriveSubsystem;
@@ -24,11 +25,17 @@ public class DifferentialDriveCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    driveSubsystem.drive(
+    /* driveSubsystem.tankDrive(
     -(JoystickConstants.xBoxController.getRawAxis(JoystickConstants.xBoxyAxis) -
     JoystickConstants.xBoxController.getRawAxis(JoystickConstants.xBoxXAxis)), 
     -(JoystickConstants.xBoxController.getRawAxis(JoystickConstants.xBoxyAxis)
-      + JoystickConstants.xBoxController.getRawAxis(JoystickConstants.xBoxXAxis)));
+      + JoystickConstants.xBoxController.getRawAxis(JoystickConstants.xBoxXAxis))); */
+
+    driveSubsystem.tankDrive(
+    (JoystickConstants.xBoxController.getRawAxis(JoystickConstants.xBoxyAxis) -
+    JoystickConstants.xBoxController.getRawAxis(JoystickConstants.xBoxXAxis)), 
+    -(JoystickConstants.xBoxController.getRawAxis(JoystickConstants.xBoxyAxis)
+    + JoystickConstants.xBoxController.getRawAxis(JoystickConstants.xBoxXAxis)));
   }
 
   // Called once the command ends or is interrupted.

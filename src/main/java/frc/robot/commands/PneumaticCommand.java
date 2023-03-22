@@ -4,40 +4,46 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants.JoystickConstants;
-import frc.robot.subsystems.TurretSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
 
-public class TurretCommand extends CommandBase {
+public class PneumaticCommand extends CommandBase {
 
-  TurretSubsystem turretSubsystem;
+  public IntakeSubsystem intakeSubsystem;
 
-  /** Creates a new TurretCommand. */
-  public TurretCommand(TurretSubsystem turretSubsystem) {
+  /** Creates a new SolenoidCommand. */
+  public PneumaticCommand(IntakeSubsystem intakeSubsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
-    this.turretSubsystem = turretSubsystem;
-    addRequirements(this.turretSubsystem);
+    this.intakeSubsystem = intakeSubsystem;
+    addRequirements(this.intakeSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    if(intakeSubsystem.getIntakeValue() == Value.kForward){
+      intakeSubsystem.closeIntake();
+    }else{
+      intakeSubsystem.openIntake();
+    }
+  }
+
+  private boolean end = false;
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    turretSubsystem.setTurretMotor(-0.75 * JoystickConstants.ps4Controller.getRawAxis(JoystickConstants.Ps4XAxis));
+    end = true;
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-    turretSubsystem.setTurretMotor(0);
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return end;
   }
 }

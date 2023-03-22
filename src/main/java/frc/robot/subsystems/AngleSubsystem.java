@@ -6,6 +6,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.SubsystemConstants;
 import frc.robot.commands.AngleCommand;
@@ -17,6 +18,9 @@ public class AngleSubsystem extends SubsystemBase {
     new WPI_VictorSPX(SubsystemConstants.angleMotorIds[1])
   };
 
+  public DigitalInput topLimitSwitch = new DigitalInput(0);
+  public DigitalInput bottomLimitSwitch = new DigitalInput(1);
+
 
   /** Creates a new AngleSubsystem. */
   public AngleSubsystem() {
@@ -24,7 +28,7 @@ public class AngleSubsystem extends SubsystemBase {
   }
 
   public void setAngleMotor(double speed){
-    angleMotors[0].set(speed);
+    angleMotors[0].set(-speed);
     angleMotors[1].set(-speed);
   }
 
