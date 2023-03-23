@@ -2,36 +2,37 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands.Shooter;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
-import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.Constants.JoystickConstants;
+import frc.robot.subsystems.TurretSubsystem;
 
-public class ShooterCommand extends CommandBase {
+public class TurretCommand extends CommandBase {
 
-  ShooterSubsystem mShooterSubsystem;
+  TurretSubsystem turretSubsystem;
 
-  public ShooterCommand(ShooterSubsystem subsystem) {
-    mShooterSubsystem = subsystem;
-    addRequirements(mShooterSubsystem);
+  /** Creates a new TurretCommand. */
+  public TurretCommand(TurretSubsystem turretSubsystem) {
+    // Use addRequirements() here to declare subsystem dependencies.
+    this.turretSubsystem = turretSubsystem;
+    addRequirements(this.turretSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mShooterSubsystem.setShooter(Constants.controller.getRawAxis(Constants.powerAxis));
+    turretSubsystem.setTurretMotor(-0.75 * JoystickConstants.ps4Controller.getRawAxis(JoystickConstants.Ps4XAxis));
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    mShooterSubsystem.setShooter(0);
+    turretSubsystem.setTurretMotor(0);
   }
 
   // Returns true when the command should end.

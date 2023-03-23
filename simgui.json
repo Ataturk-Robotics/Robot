@@ -1,40 +1,15 @@
 {
   "HALProvider": {
     "Other Devices": {
-      "Compressor[0]": {
+      "Victor SPX[10]": {
         "header": {
           "open": true
         }
       },
-      "Victor SPX[1]": {
+      "Victor SPX[11]": {
         "header": {
           "open": true
         }
-      },
-      "Victor SPX[2]": {
-        "header": {
-          "open": true
-        }
-      },
-      "Victor SPX[3]": {
-        "header": {
-          "open": true
-        }
-      }
-    },
-    "RoboRIO": {
-      "window": {
-        "visible": true
-      }
-    },
-    "Solenoids": {
-      "0": {
-        "header": {
-          "open": true
-        }
-      },
-      "window": {
-        "visible": true
       }
     }
   },
@@ -42,16 +17,42 @@
     "types": {
       "/FMSInfo": "FMSInfo",
       "/LiveWindow/DriveSubsystem": "Subsystem",
-      "/LiveWindow/IntakeSubsystem": "Subsystem",
-      "/LiveWindow/Ungrouped/Scheduler": "Scheduler"
+      "/LiveWindow/Ungrouped/Scheduler": "Scheduler",
+      "/LiveWindow/Ungrouped/Victor SPX [10]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Victor SPX [11]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Victor SPX [13]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Victor SPX [17]": "Motor Controller"
     }
   },
   "NetworkTables": {
     "CameraPublisher": {
+      "Bgr": {
+        "open": true
+      },
       "USB Camera 0": {
         "open": true
       },
       "open": true
+    },
+    "LiveWindow": {
+      "open": true
+    },
+    "Persistent Values": {
+      "open": false
+    },
+    "Retained Values": {
+      "open": false
+    },
+    "Transitory Values": {
+      "open": false
+    },
+    "transitory": {
+      "CameraPublisher": {
+        "Rectangle": {
+          "open": true
+        },
+        "open": true
+      }
     }
   }
 }

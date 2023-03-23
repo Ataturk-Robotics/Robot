@@ -4,70 +4,59 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.PS4Controller;
+import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.Constants.JoystickConstants;
+import frc.robot.commands.IntakeCommand;
+import frc.robot.commands.PneumaticCommand;
+import frc.robot.subsystems.AngleSubsystem;
+import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.TurretSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import edu.wpi.first.wpilibj2.command.button.POVButton;
-import frc.robot.commands.Climber.AngleCommand;
-import frc.robot.commands.Climber.ClimberCommand;
-import frc.robot.commands.Drive.Aim;
-import frc.robot.commands.Drive.DriveCommand;
-import frc.robot.commands.Intake.ArmCommand;
-import frc.robot.commands.Intake.IntakeCommand;
-import frc.robot.commands.Shooter.ShooterCommand;
-import frc.robot.subsystems.AngleSubsystem;
-import frc.robot.subsystems.ClimberSubsystem;
-import frc.robot.subsystems.DriveSubsystem;
-import frc.robot.subsystems.IntakeSubsystem;
-import frc.robot.subsystems.ShooterSubsystem;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
- * This class is where the bulk of the robot should be declared. Since
- * Command-based is a
- * "declarative" paradigm, very little robot logic should actually be handled in
- * the {@link Robot}
- * periodic methods (other than the scheduler calls). Instead, the structure of
- * the robot (including
+ * This class is where the bulk of the robot should be declared. Since Command-based is a
+ * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
+ * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
+
+  DriveSubsystem driveSubsystem = new DriveSubsystem();
+  AngleSubsystem angleSubsystem = new AngleSubsystem();
+  TurretSubsystem turretSubsystem = new TurretSubsystem();
+  ArmSubsystem armSubsystem = new ArmSubsystem();
+  IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
+
   // The robot's subsystems and commands are defined here...
 
-  IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
-  DriveSubsystem driveSubsystem = new DriveSubsystem();
-  ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
-  ClimberSubsystem climberSubsystem = new ClimberSubsystem();
-  AngleSubsystem angleSubsystem = new AngleSubsystem();
-
+  /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
   }
 
+  /**
+   * Use this method to define your button->command mappings. Buttons can be created by
+   * instantiating a {@link GenericHID} or one of its subclasses ({@link
+   * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
+   * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
+   */
   private void configureButtonBindings() {
-    var armButton = new JoystickButton(Constants.controller, Constants.kArmButton);
-    var intakeButton = new JoystickButton(Constants.controller, Constants.kIntakeButton);
-    var shooterButton = new JoystickButton(Constants.controller, Constants.kShooterButton);
-    var alignButton = new JoystickButton(Constants.controller, Constants.kAlignButton);
-    var climberButton = new JoystickButton(Constants.controller, Constants.kClimberButton);
-    var aimButton = new JoystickButton(Constants.controller, Constants.kAimButton);
-
-    var topPOV = new POVButton(Constants.controller, 0);
-    var bottomPOV = new POVButton(Constants.controller, 180);
-
-    armButton.whenPressed(new ArmCommand(intakeSubsystem));
-    intakeButton.whenHeld(new IntakeCommand(intakeSubsystem));
-    shooterButton.whenHeld(new ShooterCommand(shooterSubsystem));
-    alignButton.whenPressed(new SequentialCommandGroup(
-        new RunCommand(() -> intakeSubsystem.setIntake(-0.3)).withTimeout(0.3),
-        new RunCommand(() -> intakeSubsystem.setIntake(0)).withTimeout(0.1)));
-    climberButton.toggleWhenPressed(new ClimberCommand(climberSubsystem));
-    aimButton.whenHeld(new Aim(driveSubsystem, Constants.kTargetFound ,Constants.kCenterX));
-
-    topPOV.whenHeld(new AngleCommand(angleSubsystem, 1));
-    bottomPOV.whenHeld(new AngleCommand(angleSubsystem, -1));
+    var intakeButton = new JoystickButton(JoystickConstants.ps4Controller, PS4Controller.Button.kCross.value);
+    var outIntakebutton = new JoystickButton(JoystickConstants.ps4Controller, PS4Controller.Button.kCircle.value);
+    var pneumaticButton = new JoystickButton(JoystickConstants.ps4Controller, PS4Controller.Button.kTriangle.value);
+    
+    intakeButton.whenHeld(new IntakeCommand(intakeSubsystem, 1));
+    outIntakebutton.whenHeld(new IntakeCommand(intakeSubsystem, -1));
+    pneumaticButton.whenPressed(new PneumaticCommand(intakeSubsystem));
   }
 
   /**
@@ -76,19 +65,9 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
+    // An ExampleCommand will run in autonomous
     return new SequentialCommandGroup(
-        new RunCommand(() -> intakeSubsystem.dropArm()).withTimeout(0.1),
-        new RunCommand(() -> shooterSubsystem.setShooter(-0.8240)).withTimeout(3),
-        new RunCommand(() -> intakeSubsystem.setIntake(0.5)).withTimeout(1),
-        new RunCommand(() -> intakeSubsystem.setIntake(0)).withTimeout(0.1),
-        new RunCommand(() -> intakeSubsystem.setRoller(-0.5)).withTimeout(0.1),
-        new DriveCommand(0.5, driveSubsystem).withTimeout(1),
-        new WaitCommand(1.5),
-        new DriveCommand(-0.5, driveSubsystem).withTimeout(1),
-        new WaitCommand(1.5),
-        new RunCommand(() -> intakeSubsystem.setRoller(0)).withTimeout(0.1),
-        new RunCommand(() -> intakeSubsystem.setIntake(0.5)).withTimeout(1),
-        new RunCommand(() -> intakeSubsystem.setIntake(0)).withTimeout(1),
-        new RunCommand(() -> shooterSubsystem.setShooter(0)).withTimeout(1));
+      new RunCommand(() -> driveSubsystem.tankDrive(1, 1))
+    );
   }
 }
