@@ -27,7 +27,7 @@ public class ArmCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double speed = -JoystickConstants.ps4Controller.getRawAxis(JoystickConstants.ps4ZAxis) * 0.8;
+    double speed = -JoystickConstants.ps4Controller.getRawAxis(JoystickConstants.ps4ZAxis) * 0.75;
     if(speed < 0){
       if(armSubsystem.topLimitSwitch.get()){
         armSubsystem.setArmMotor(speed);

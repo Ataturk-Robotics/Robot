@@ -22,14 +22,14 @@ import frc.robot.commands.DifferentialDriveCommand;
 
 public class DriveSubsystem extends SubsystemBase {
 
-  WPI_VictorSPX frontLeftMotor = new WPI_VictorSPX(3);
+  WPI_VictorSPX frontLeftMotor = new WPI_VictorSPX(DriveConstants.leftMotorIds[0]);
   /* WPI_VictorSPX rearLeftMotor = new WPI_VictorSPX(DriveConstants.leftMotorIds[1]);
 
   private final MotorControllerGroup m_leftMotors = new MotorControllerGroup(
     frontLeftMotor, rearLeftMotor
   ); */
 
-  WPI_VictorSPX frontRightMotor = new WPI_VictorSPX(15);
+  WPI_VictorSPX frontRightMotor = new WPI_VictorSPX(DriveConstants.rightMotorIds[0]);
   /* WPI_VictorSPX rearRightMotor = new WPI_VictorSPX(DriveConstants.rightMotorIds[1]);
 
   private final MotorControllerGroup m_rightMotors = new MotorControllerGroup(
@@ -88,20 +88,8 @@ public class DriveSubsystem extends SubsystemBase {
   }
   
   public void tankDrive(double leftSpeed, double rightSpeed) {
-    /* frontLeftMotor.set(ControlMode.PercentOutput, -leftSpeed);
-    rearLeftMotor.set(ControlMode.PercentOutput, leftSpeed);
-
-    frontRightMotor.set(ControlMode.PercentOutput, -rightSpeed);
-    rearRightMotor.set(ControlMode.PercentOutput, rightSpeed); */
-    //m_drive.tankDrive(leftSpeed, rightSpeed);
-    //frontLeftMotor.set(ControlMode.PercentOutput, leftSpeed);
-    //frontRightMotor.set(ControlMode.PercentOutput, -rightSpeed);
-
-    m_drive.tankDrive(leftSpeed, -rightSpeed);
+    m_drive.tankDrive(leftSpeed, rightSpeed);
   }
-  /* public void arcadeDrive(double leftSpeed, double rightSpeed){
-    m_drive.arcadeDrive(leftSpeed, rightSpeed);
-  } */
 
   public void stop() {
     tankDrive(0, 0);

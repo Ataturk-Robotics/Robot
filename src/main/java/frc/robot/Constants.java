@@ -37,7 +37,7 @@ public final class Constants {
     public static final class DriveConstants{
         // Drive Motors
         public static int[] leftMotorIds = {1, 0};
-        public static int[] rightMotorIds = {14, 4};
+        public static int[] rightMotorIds = {3, 4};
 
         public static final boolean kMotorsInverted = true;
 
@@ -53,7 +53,7 @@ public final class Constants {
 
     public static final class SubsystemConstants{
         public static int[] angleMotorIds = {4, 6};
-        public static int turretMotorId = 19;
+        public static int turretMotorId = 2;
         public static int[] armMotorIds = {5, 7};
         public static int intakeMotorId = 8;
     }

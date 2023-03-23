@@ -30,7 +30,6 @@ public class Robot extends TimedRobot {
    */
 
   Compressor comp = new Compressor(PneumaticsModuleType.CTREPCM);
-  
 
   @Override
   public void robotInit() {
