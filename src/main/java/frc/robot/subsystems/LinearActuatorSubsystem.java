@@ -9,9 +9,9 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.SubsystemConstants;
-import frc.robot.commands.AngleCommand;
+import frc.robot.commands.LinearActuatorCommand;
 
-public class AngleSubsystem extends SubsystemBase {
+public class LinearActuatorSubsystem extends SubsystemBase {
 
   WPI_VictorSPX angleMotors[] = {
     new WPI_VictorSPX(SubsystemConstants.angleMotorIds[0]),
@@ -22,8 +22,8 @@ public class AngleSubsystem extends SubsystemBase {
   public DigitalInput bottomLimitSwitch = new DigitalInput(1);
 
   /** Creates a new AngleSubsystem. */
-  public AngleSubsystem() {
-    setDefaultCommand(new AngleCommand(this));
+  public LinearActuatorSubsystem() {
+    setDefaultCommand(new LinearActuatorCommand(this));
   }
 
   public void setAngleMotor(double speed){

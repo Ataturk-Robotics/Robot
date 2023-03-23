@@ -6,17 +6,17 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.JoystickConstants;
-import frc.robot.subsystems.AngleSubsystem;
+import frc.robot.subsystems.LinearActuatorSubsystem;
 
-public class AngleCommand extends CommandBase {
+public class LinearActuatorCommand extends CommandBase {
 
-  AngleSubsystem angleSubsystem;
+  LinearActuatorSubsystem linearSubsystem;
 
   /** Creates a new AngleCommand. */
-  public AngleCommand(AngleSubsystem angleSubsystem) {
+  public LinearActuatorCommand(LinearActuatorSubsystem linearSubsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
-    this.angleSubsystem = angleSubsystem;
-    addRequirements(this.angleSubsystem);
+    this.linearSubsystem = linearSubsystem;
+    addRequirements(this.linearSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -28,16 +28,16 @@ public class AngleCommand extends CommandBase {
   public void execute() {
     double speed = -JoystickConstants.ps4Controller.getRawAxis(JoystickConstants.Ps4yAxis);
     if(speed < 0){
-      if(angleSubsystem.topLimitSwitch.get()){
-        angleSubsystem.setAngleMotor(speed);
+      if(linearSubsystem.topLimitSwitch.get()){
+        linearSubsystem.setAngleMotor(speed);
       }else{
-        angleSubsystem.setAngleMotor(0);
+        linearSubsystem.setAngleMotor(0);
       }
     }else{
-      if(angleSubsystem.bottomLimitSwitch.get()){
-        angleSubsystem.setAngleMotor(speed);
+      if(linearSubsystem.bottomLimitSwitch.get()){
+        linearSubsystem.setAngleMotor(speed);
       }else{
-        angleSubsystem.setAngleMotor(0);
+        linearSubsystem.setAngleMotor(0);
       }
     }
   }
@@ -45,7 +45,7 @@ public class AngleCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    angleSubsystem.setAngleMotor(0);
+    linearSubsystem.setAngleMotor(0);
   }
 
   // Returns true when the command should end.
