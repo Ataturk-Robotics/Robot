@@ -21,7 +21,6 @@ public class AngleSubsystem extends SubsystemBase {
   public DigitalInput topLimitSwitch = new DigitalInput(0);
   public DigitalInput bottomLimitSwitch = new DigitalInput(1);
 
-
   /** Creates a new AngleSubsystem. */
   public AngleSubsystem() {
     setDefaultCommand(new AngleCommand(this));
