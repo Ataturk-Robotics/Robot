@@ -19,69 +19,31 @@ import frc.robot.commands.DifferentialDriveCommand;
 public class DriveSubsystem extends SubsystemBase {
 
   WPI_VictorSPX frontLeftMotor = new WPI_VictorSPX(DriveConstants.leftMotorIds[0]);
-  /* WPI_VictorSPX rearLeftMotor = new WPI_VictorSPX(DriveConstants.leftMotorIds[1]);
-
-  private final MotorControllerGroup m_leftMotors = new MotorControllerGroup(
-    frontLeftMotor, rearLeftMotor
-  ); */
+  WPI_VictorSPX rearLeftMotor = new WPI_VictorSPX(DriveConstants.leftMotorIds[1]);
 
   WPI_VictorSPX frontRightMotor = new WPI_VictorSPX(DriveConstants.rightMotorIds[0]);
-  /* WPI_VictorSPX rearRightMotor = new WPI_VictorSPX(DriveConstants.rightMotorIds[1]);
-
-  private final MotorControllerGroup m_rightMotors = new MotorControllerGroup(
-    frontRightMotor, rearRightMotor
-  ); */
+  WPI_VictorSPX rearRightMotor = new WPI_VictorSPX(DriveConstants.rightMotorIds[1]);
 
   private final DifferentialDrive m_drive = new DifferentialDrive(frontLeftMotor, frontRightMotor);
 
-  // The left-side drive encoder
-  private final Encoder m_leftEncoder = new Encoder(
-    DriveConstants.kLeftEncoderPorts[0],
-    DriveConstants.kLeftEncoderPorts[1],
-    DriveConstants.kLeftEncoderReversed
-  );
-
-  // The right-side drive encoder
-  private final Encoder m_rightEncoder = new Encoder(
-    DriveConstants.kRightEncoderPorts[0],
-    DriveConstants.kRightEncoderPorts[1],
-    DriveConstants.kRightEncoderReversed
-  );
-
-  private final AtarobGyro gyro = new AtarobGyro();
-
-  // Odometry class for tracking robot pose
-  private final DifferentialDriveOdometry odometry;
 
   /** Creates a new DriveSubsystem. */
   public DriveSubsystem() {
    setDefaultCommand(new DifferentialDriveCommand(this));
 
-   m_leftEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
-   m_rightEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
+   rearLeftMotor.follow(frontLeftMotor);
+   rearRightMotor.follow(rearRightMotor);
 
-   resetEncoders();
-   odometry =
-   new DifferentialDriveOdometry(
-    gyro.getRotation2d(),
-    m_leftEncoder.getDistance(),
-    m_rightEncoder.getDistance()
-   );
+   frontLeftMotor.setInverted(true);
+
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
 
-    odometry.update(
-      gyro.getRotation2d(),
-      m_leftEncoder.getDistance(),
-      m_rightEncoder.getDistance());
   }
 
-  public Pose2d getPose() {
-    return odometry.getPoseMeters();
-  }
   
   public void tankDrive(double leftSpeed, double rightSpeed) {
     m_drive.tankDrive(leftSpeed, rightSpeed);
@@ -90,33 +52,5 @@ public class DriveSubsystem extends SubsystemBase {
   public void stop() {
     tankDrive(0, 0);
   }
-
-  public DifferentialDriveWheelSpeeds getWheelSpeeds() {
-    return new DifferentialDriveWheelSpeeds(m_leftEncoder.getRate(), m_rightEncoder.getRate());
-  }
-
-  public double getHeading() {
-    return gyro.getRotation2d().getDegrees();
-  }
-
-  public void resetOdometry(Pose2d pose) {
-    resetEncoders();
-    odometry.resetPosition(
-        gyro.getRotation2d(), m_leftEncoder.getDistance(), m_rightEncoder.getDistance(), pose);
-  }
-
-  public void tankDriveVolts(double leftVolts, double rightVolts) {
-    frontLeftMotor.setVoltage(leftVolts);
-    frontRightMotor.setVoltage(rightVolts);
-    m_drive.feed();
-  }
-
-  // Resets the drive encoders to currently read a position of 0. 
-  public void resetEncoders() {
-    m_leftEncoder.reset();
-    m_rightEncoder.reset();
-  }
-
-
   
 }
