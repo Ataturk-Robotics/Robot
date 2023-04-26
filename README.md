@@ -35,5 +35,5 @@ The code for the team 8240 Atatürk Robotics' *2023* FRC robot code.
 - <a href="https://www.ni.com/en-tr/support/downloads/drivers/download.frc-game-tools.html#440024">FRC Game Tools</a>'un son sürümünü indirip kurun *(Sadece kod robota atılacaksa gerekli, simülasyon kullanılacaksa gerek yok)*
 
 ```
-git clone https://github.com/Ataturk-Robotics/Robot/tree/Robot-2022
+git clone https://github.com/Ataturk-Robotics/Robot/tree/Robot-2023
 ```
