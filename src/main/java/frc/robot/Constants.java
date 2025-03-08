@@ -16,54 +16,57 @@ import edu.wpi.first.wpilibj.XboxController;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-
-    public static final class JoystickConstants{
-        // * Xbox
-        private static int kXboxControllerPort = 0;
-        public static XboxController xBoxController = new XboxController(kXboxControllerPort);
-        public static int xBoxXAxis = 1;
-        public static int xBoxyAxis = 0;
-        public static int xBoxpowerAxis = 3;
-
-        // * PS4
-        private static int kPs4ControllerPort = 1;
-        public static PS4Controller ps4Controller = new PS4Controller(kPs4ControllerPort);
-        public static int Ps4XAxis = 0;
-        public static int Ps4yAxis = 1;
-        public static int ps4ZAxis = 5;
-    }
+  //Joystick
+  public static final class JoystickConstants{
+    static int  kXboxControllerPort = 0;
+    public static XboxController xBoxController = new XboxController(kXboxControllerPort);
+    public static int xBoxXAxis = 0;
+    public static int xBoxyAxis = 1;
+    public static int xBoxpowerAxis = 3;
+    public static final int RIGHT_X_AXIS = XboxController.Axis.kRightX.value;
+    public static final int RIGHT_Y_AXIS = XboxController.Axis.kRightY.value;
+    public static final int LEFT_X_AXIS = XboxController.Axis.kLeftX.value;
+    public static final int LEFT_Y_AXIS = XboxController.Axis.kLeftY.value;
+    
+    // Xbox Buttons
+    public static final int A_BUTTON = XboxController.Button.kA.value;
+    public static final int B_BUTTON = XboxController.Button.kB.value;
+    public static final int X_BUTTON = XboxController.Button.kX.value;
+    public static final int Y_BUTTON = XboxController.Button.kY.value;
+    public static final int LEFT_BUMPER = XboxController.Button.kLeftBumper.value;
+    public static final int RIGHT_BUMPER = XboxController.Button.kRightBumper.value;
+    
+    // Xbox Triggers
+    public static final int LEFT_TRIGGER = XboxController.Axis.kLeftTrigger.value;
+    public static final int RIGHT_TRIGGER = XboxController.Axis.kRightTrigger.value;
     
 
-    public static final class DriveConstants{
-        // Drive Motors
-        public static int[] leftMotorIds = {1, 0};
-        public static int[] rightMotorIds = {3, 4};
+    // * PS4
+    private static int kPs4ControllerPort = 1;
+    public static PS4Controller ps4Controller = new PS4Controller(kPs4ControllerPort);
+    public static int Ps4XAxis = 0;
+    public static int Ps4yAxis = 1;
+    public static int ps4ZAxis = 5;
+  }
 
-        public static final boolean kMotorsInverted = true;
+  //MotorIDs
+  public static final class MotorIDConstants{
+    //Climbing
+    public static final int ClimbingMotorID = 12;
+    public static final int GrabberMotorID = 13;
 
-        // * Encoders
-        public static final int[] kLeftEncoderPorts = {6, 7};
-        public static boolean kLeftEncoderReversed = true;
+    //Intake
+    public static final int IntakeNeoMotorID = 11;
+    public static final int IntakeCimMotorID = 10;
+    public static final int IntakeAngleMotorID = 3;
 
-        public static final int[] kRightEncoderPorts = {8, 9};
-        public static boolean kRightEncoderReversed = true;
+    //Elevator
+    public static final int[] ElevatorMotorID = {8, 9};
 
-        public static final double kEncoderDistancePerPulse = 1.0/4.0; 
-    }
+    //Drive
+    public static int[] leftMotorIds = {5, 4};
+    public static int[] rightMotorIds = {7, 2};
 
-    public static final class SubsystemConstants{
-        public static int[] angleMotorIds = {4, 6};
-        public static int turretMotorId = 2;
-        public static int[] armMotorIds = {5, 7};
-        public static int intakeMotorId = 8;
-    }
 
-    
-    
-    
-    
-
-    
-
-    
+  }
 }

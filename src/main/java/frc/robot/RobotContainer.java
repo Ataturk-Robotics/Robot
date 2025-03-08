@@ -4,63 +4,75 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.PS4Controller;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.Constants.JoystickConstants;
-import frc.robot.commands.IntakeCommand;
-import frc.robot.commands.PneumaticCommand;
-<<<<<<< HEAD
-import frc.robot.subsystems.LinearActuatorSubsystem;
-=======
->>>>>>> 1c5d11568cc896639cc2efe085c487831c0eee4b
-import frc.robot.subsystems.ArmSubsystem;
-import frc.robot.subsystems.DriveSubsystem;
-import frc.robot.subsystems.IntakeSubsystem;
-import frc.robot.subsystems.LinearActuatorSubsystem;
-import frc.robot.subsystems.TurretSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.RunCommand;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.Constants.JoystickConstants;
+import frc.robot.commands.Autonomous.Autodeneme;
+import frc.robot.commands.Climb.ClimbCommand;
+import frc.robot.commands.Climb.GrabberCommand;
+import frc.robot.commands.Intake.IntakeAngleCommand;
+import frc.robot.subsystems.ClimbSubsystem;
+import frc.robot.subsystems.DifferentialDriveSubsystem;
+import frc.robot.subsystems.ElevatorSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
  * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
- * subsystems, commands, and button mappings) should be declared here.
+ * subsystems, commands, and trigger mappings) should be declared here.
  */
 public class RobotContainer {
-
-  DriveSubsystem driveSubsystem = new DriveSubsystem();
-  LinearActuatorSubsystem angleSubsystem = new LinearActuatorSubsystem();
-  TurretSubsystem turretSubsystem = new TurretSubsystem();
-  ArmSubsystem armSubsystem = new ArmSubsystem();
+  // The robot's subsystems and commands are defined here...
+  DifferentialDriveSubsystem driveSubsystem = new DifferentialDriveSubsystem();
+  ClimbSubsystem climbSubsystem = new ClimbSubsystem();
+  ElevatorSubsystem elevatorSubsystem = new ElevatorSubsystem();
   IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
 
-  // The robot's subsystems and commands are defined here...
+  XboxController xboxController = JoystickConstants.xBoxController;
+
+
+  // Replace with CommandPS4Controller or CommandJoystick if needed
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-    // Configure the button bindings
-    configureButtonBindings();
+    // Configure the trigger bindings
+    configureBindings();
   }
 
   /**
-   * Use this method to define your button->command mappings. Buttons can be created by
-   * instantiating a {@link GenericHID} or one of its subclasses ({@link
-   * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
-   * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
+   * Use this method to define your trigger->command mappings. Triggers can be created via the
+   * {@link Trigger#Trigger(java.util.function.BooleanSupplier)} constructor with an arbitrary
+   * predicate, or via the named factories in {@link
+   * edu.wpi.first.wpilibj2.command.button.CommandGenericHID}'s subclasses for {@link
+   * CommandXboxController Xbox}/{@link edu.wpi.first.wpilibj2.command.button.CommandPS4Controller
+   * PS4} controllers or {@link edu.wpi.first.wpilibj2.command.button.CommandJoystick Flight
+   * joysticks}.
    */
-  private void configureButtonBindings() {
-    var intakeButton = new JoystickButton(JoystickConstants.ps4Controller, PS4Controller.Button.kCross.value);
-    var outIntakebutton = new JoystickButton(JoystickConstants.ps4Controller, PS4Controller.Button.kCircle.value);
-    var pneumaticButton = new JoystickButton(JoystickConstants.ps4Controller, PS4Controller.Button.kTriangle.value);
-    
-    intakeButton.whenHeld(new IntakeCommand(intakeSubsystem, 1));
-    outIntakebutton.whenHeld(new IntakeCommand(intakeSubsystem, -1));
-    pneumaticButton.whenPressed(new PneumaticCommand(intakeSubsystem));
+  private void configureBindings() {
+    var climbingUpButton = new JoystickButton(xboxController, JoystickConstants.B_BUTTON);
+    var ClimbingDownButton = new JoystickButton(xboxController, JoystickConstants.A_BUTTON);
+
+    var GrabberUpButton = new JoystickButton(xboxController, JoystickConstants.Y_BUTTON);
+    var GrabberDownButton = new JoystickButton(xboxController, JoystickConstants.X_BUTTON);
+
+    var AngleUpButton = new JoystickButton(xboxController, JoystickConstants.RIGHT_BUMPER);
+    var AngleDownButton = new JoystickButton(xboxController, JoystickConstants.LEFT_BUMPER);
+
+    climbingUpButton.whileTrue(new ClimbCommand(climbSubsystem, 0.6));
+    ClimbingDownButton.whileTrue(new ClimbCommand(climbSubsystem, -0.6));
+
+    GrabberUpButton.whileTrue(new GrabberCommand(climbSubsystem, 0.5));
+    GrabberDownButton.whileTrue(new GrabberCommand(climbSubsystem, -0.5));
+
+    AngleUpButton.whileTrue(new IntakeAngleCommand(intakeSubsystem, -0.2));
+    AngleDownButton.whileTrue(new IntakeAngleCommand(intakeSubsystem, 0.1));
+
+
+    //POV BUTTON
   }
 
   /**
@@ -69,9 +81,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    // An ExampleCommand will run in autonomous
-    return new SequentialCommandGroup(
-      new RunCommand(() -> driveSubsystem.tankDrive(1, 1))
-    );
+    // An example command will be run in autonomous
+    return new Autodeneme(driveSubsystem, intakeSubsystem);
   }
 }
