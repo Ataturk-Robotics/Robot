@@ -18,14 +18,12 @@ The code for the team 10185 Hydrob *2025* FRC robot code.
 │           └───frc
 │               └───robot
 │                   ├───commands
-│                   │   ├───ArmCommand       #Kol Mekanizmasını kaldırıp indirme komutları
+│                   │   ├───AngleCommand     #Kola açı verme komutları
 │                   │   ├───DriveCommand     #Hareket komutları
-│                   │   ├───IntakeCommand    #Küp/Koni alma komutları
-│                   │   ├───LinearCommand    #Kola açı verme komutları
-|                   |   ├───PneumaticCommand #Intake'teki pneumatic sistemini çalıştırma komutları
-|                   |   └───TurretCommand    #Turreti döndürme komutları
+│                   │   ├───IntakeCommand    #Coral/Alg ALma/Atma komutları
+|                   |   ├───ElevatorCommand  #Asansör sistemi komutları
 │                   └───subsystems     #Subsystemler
-└───vendordeps                         #Kütüphaneler
+                        #Kütüphaneler
 ```
 
 ## Projeyi bilgisayara kopyalama
