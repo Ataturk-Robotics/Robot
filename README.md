@@ -2,9 +2,9 @@
 
 [![CI](https://github.com/Ataturk-Robotics/Robot/actions/workflows/ci.yml/badge.svg)](https://github.com/Ataturk-Robotics/Robot/actions/workflows/ci.yml)
 
-8240 Atatürk Robotics'in *2023* FRC robot kodu. 
+10185 Hydrob'un *2025* FRC robot kodu. 
 
-The code for the team 8240 Atatürk Robotics' *2023* FRC robot code.
+The code for the team 10185 Hydrob *2025* FRC robot code.
 
 ### <a href="https://docs.wpilib.org/tr/">WPILIB dokümanları</a>
 
